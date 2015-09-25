@@ -34,6 +34,9 @@ extern	shellcmd  xsh_help	(int32, char *[]);
 /* in file xsh_hello.c */
 extern	shellcmd  xsh_hello	(int32, char *[]);
 
+/* in file xsh_prodcons.c */
+extern	shellcmd  xsh_prodcons	(int32, char *[]);
+
 /* in file xsh_ipaddr.c */
 extern	shellcmd  xsh_ipaddr	(int32, char *[]);
 
