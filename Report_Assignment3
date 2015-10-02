@@ -1,0 +1,29 @@
+Assignment 3
+
+1.	How exactly is synchronization achieved using semaphore in our assignment?
+We are using Binary semaphores to achieve synchronization. We need the producer to wait while consumer is running and the consumer to wait while producer is running. That is why two semaphores are needed. We are using wait() and signal() system calls where wait() decrements the semaphore and adds the calling process to the set of waiting processes if the result is negative. Signal increments the semaphore and allows one of the waiting processes to continue, if any are waiting. Here we have semaphore named consumed which begins with a count of 1 and a semaphore named produced which begins with a count of 0. As consumed begins with count 1 it will not block the first time it is called in produce.c and the producer code prints i.e. value is produced by producer. Also as produced begins with count 0 it will block when called in consume.c and the value of n is not printed until producer finishes and signals consumer which increments the count of produced to 1 and hence the value of n consumed is printed i.e. value is consumed. The producer and consumer coordinate in this way toggling the count between 0 and 1 and thereby all values produced by producer are consumed by consumer.
+
+2.	Can the above synchronization be achieved with just one semaphore? Why or why not?
+No, the above synchronization cannot be achieved using one semaphore. In binary semaphores when the producer wait() happens, the consumer is signalled to execute while the producer sleeps (i.e. when buffer is full producer stops and consumers starts to consume the elements in the buffer. As soon as the buffer becomes empty, the consumer signals the producer and the producer then executes (while the consumer sleeps). In this way synchronization is achieved and all produced values are consumed. If we use a single semaphore, only one process can access the shared resource, i.e. when producer accesses the shared resource, then it can only release it by signalling the semaphore, so here the toggle between producer and consumer doesn’t happen and hence there is no synchronization.
+
+ Functions and System calls used:
+1.	producer() – This function is responsible  for incrementing the value of shared global integer variable and sending it to the buffer from which it will be consumed by the consumer.
+2.	consumer() – This function is responsible for consuming the value provided by the producer in the buffer continuously and printing it repeatedly.
+3.	resume() – This function is responsible to unsuspend a process and bring it into ready state. It takes the process id of the process to be unsuspended as a parameter.
+4.	create() – This function is responsible for creating a process to begin execution of a procedure. It takes procedure address, stack size, process priority, name and number of arguments as parameters. It returns a process id if process creation is successful and the process remains in suspended state.
+
+5.	Semcreate() - Semcreate takes an initial semaphore count as an argument, allocates
+a semaphore, assigns the semaphore the specified count, and returns the semaphore ID. To preserve the semaphore invariant, the initial count must be nonnegative. Therefore, semcreate begins by testing its argument. If the argument is valid, semcreate searches the semaphore table, semtab, for an unused entry and initializes the count. To search the table, semcreate calls procedure newsem, which iterates through all NSEM entries of the table. If no free entry is found, newsem returns SYSERR. Otherwise, newsem changes the state of the entry to S_USED, and returns the table index. Once a table entry has been allocated, semcreate only needs to initialize the count and return the index of the semaphore to its caller; the head and tail of a queue used to store waiting processes have been allocated when the operating system boots.
+
+6.	Semdelete() - semdelete reverses the actions of semcreate. Semdelete takes the index of a semaphore as an argument and releases the semaphore table entry for subsequent use. Deallocating a semaphore requires three steps. First, semdelete verifies that the argument specifies a valid semaphore ID and that the corresponding entry in the semaphore table is currently in use. Second, semdelete sets the state of the entry to S_FREE to indicate that the table entry can be reused. Finally, semdelete iterates through the set of processes that are waiting on the semaphore and makes each process ready.
+
+7.	Wait() - The system call wait decrements a semaphore and adds the calling process
+to the set of waiting processes if the result is negative. 
+
+8.	Signal() - The system call signal performs the opposite action by incrementing the semaphore and allowing one of the waiting process to continue, if any are waiting.
+
+Tasks performed-
+producer() – Leeladhar
+consumer() – Aritra
+xsh_prodcons – Leeladhar and Aritra
+
