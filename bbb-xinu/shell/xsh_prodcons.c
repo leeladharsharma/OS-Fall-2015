@@ -30,7 +30,6 @@ shellcmd xsh_prodcons(int nargs, char *args[])
       {
 	if(strcmp(args[1], "-f")==0)
  	{
-	 printf("inside code\n");
 	 f1 = future_alloc(FUTURE_EXCLUSIVE);
 	 f2 = future_alloc(FUTURE_EXCLUSIVE);
 	 f3 = future_alloc(FUTURE_EXCLUSIVE);
@@ -75,5 +74,9 @@ shellcmd xsh_prodcons(int nargs, char *args[])
       //Look at the definations of function create and resume in exinu/system folder for reference.      
       resume( create(producer, 1024, 20, "producer", 1, count) );
       resume( create(consumer, 1024, 20, "consumer", 1, count) );
+
+future_free(f1);
+future_free(f2);
+future_free(f3);
     
 }
