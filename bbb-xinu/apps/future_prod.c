@@ -14,4 +14,3 @@ uint future_prod(future *fut)
   restore(mask);
   return OK;
 }
-
