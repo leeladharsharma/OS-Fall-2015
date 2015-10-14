@@ -75,8 +75,5 @@ shellcmd xsh_prodcons(int nargs, char *args[])
       resume( create(producer, 1024, 20, "producer", 1, count) );
       resume( create(consumer, 1024, 20, "consumer", 1, count) );
 
-future_free(f1);
-future_free(f2);
-future_free(f3);
     
 }
