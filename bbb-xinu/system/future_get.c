@@ -4,31 +4,28 @@
 syscall future_get(future *f, int *value)
 {
 
+intmask mask;
+
 if(f->state == FUTURE_EMPTY || f->state == FUTURE_EXCLUSIVE)
 {
 	
 	f->state = FUTURE_WAITING;
 	f->pid = getpid();
-        intmask mask;
         mask = disable();
-
-	while(TRUE)
-	{       
-		printf("Inside while");
+	suspend(f->pid);
+	
 		if (f->state == FUTURE_VALID)
 		{
-		*value = f->value;
+		*value = *(f->value);
 	        f->state = FUTURE_EMPTY;
 		restore(mask);
 		return OK;
 		}
-	}
+	
 }
 if(f->state == FUTURE_EMPTY || f->state == FUTURE_EXCLUSIVE)
 {
-  intmask mask;
-  mask = disable();
-  kprintf("");
+ 
   restore(mask);
   return SYSERR;
 }
