@@ -3,6 +3,7 @@
    /*Global variable for producer consumer*/
 extern int n; /*this is just declaration*/
 
+
    /* Declare the required semaphores */
 extern sid32 consumed, produced; 
 
