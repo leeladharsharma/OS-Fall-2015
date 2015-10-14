@@ -12,7 +12,7 @@
     restore(mask);
     return -1;
   }
-  printf("it produced %d\n", i);
+  printf("it produced %u\n", i);
   restore(mask);
   return OK;
 }
