@@ -23,13 +23,18 @@ const	struct	cmdent	cmdtab[] = {
 	{"memdump",	FALSE,	xsh_memdump},
 	{"memstat",	FALSE,	xsh_memstat},
 	{"ping",	FALSE,	xsh_ping},
-	{"prodcons",	FALSE,	xsh_prodcons},
+        {"prodcons",	FALSE,	xsh_prodcons},
 	{"ps",		FALSE,	xsh_ps},
+	{"reset",	FALSE,	xsh_reset},
 	{"sleep",	FALSE,	xsh_sleep},
 	{"udp",		FALSE,	xsh_udpdump},
 	{"udpecho",	FALSE,	xsh_udpecho},
 	{"udpeserver",	FALSE,	xsh_udpeserver},
 	{"uptime",	FALSE,	xsh_uptime},
+	{"walkmem",	FALSE,	xsh_walkmem},
+	{"permanentmem",	FALSE,	xsh_permanentmem},
+	{"permanentstk",	FALSE,	xsh_permanentstk},
+	{"stacksize",	FALSE,	xsh_stacksize},
 	{"?",		FALSE,	xsh_help}
 
 };
