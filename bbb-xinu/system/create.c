@@ -26,6 +26,7 @@ pid32	create(
 	int32		i;
 	uint32		*a;		/* points to list of args	*/
 	uint32		*saddr;		/* stack address		*/
+	uint32		*stbase;
 
 	mask = disable();
 	if (ssize < MINSTK)
@@ -49,6 +50,19 @@ pid32	create(
 	prptr->prname[PNMLEN-1] = NULLCH;
 	for (i=0 ; i<PNMLEN-1 && (prptr->prname[i]=name[i])!=NULLCH; i++)
 		;
+	//printf("\n Process name outside %s", name);
+	
+	if(strcmp(prptr->prname, name)==0)
+	{
+	//printf("\n Process name is %s", name);
+	//stbase= (uint32*)prptr->prstkbase;
+	stbase=saddr;
+	for (i=0; i<ssize; i++)
+	{
+	 *--stbase = 'f';
+	}
+	}
+
 	prptr->prsem = -1;
 	prptr->prparent = (pid32)getpid();
 	prptr->prhasmsg = FALSE;
