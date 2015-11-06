@@ -1,0 +1,6 @@
+Using the new allocation with getmemnew() and getstknew(), the memory gets allocated permanently as opposed to using getmem() and getstk().
+
+using the old functions free memory - 519723264 bytes
+using the new functions free memory - 519715056 bytes
+
+This memory doesnt free up even after calling freemem as we have taken care in freemem to free for all other processes except our own new processes.
