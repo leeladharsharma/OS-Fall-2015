@@ -37,6 +37,18 @@ extern	shellcmd  xsh_hello	(int32, char *[]);
 /* in file xsh_prodcons.c */
 extern	shellcmd  xsh_prodcons	(int32, char *[]);
 
+/* in file xsh_walkmem.c */
+extern	shellcmd  xsh_walkmem	(int32, char *[]);
+
+/* in file xsh_permanentmem.c */
+extern	shellcmd  xsh_permanentmem	(int32, char *[]);
+
+/* in file xsh_permanentstk.c */
+extern	shellcmd  xsh_permanentstk	(int32, char *[]);
+
+/* in file xsh_permanentstk.c */
+extern	shellcmd  xsh_stacksize	(int32, char *[]);
+
 /* in file xsh_ipaddr.c */
 extern	shellcmd  xsh_ipaddr	(int32, char *[]);
 
@@ -60,6 +72,9 @@ extern	shellcmd  xsh_ping	(int32, char *[]);
 
 /* in file xsh_ps.c */
 extern	shellcmd  xsh_ps	(int32, char *[]);
+
+/* in file xsh_reset.c */
+extern	shellcmd  xsh_reset	(int32, char *[]);
 
 /* in file xsh_sleep.c */
 extern	shellcmd  xsh_sleep	(int32, char *[]);
