@@ -6,16 +6,26 @@
  *  freemem  -  Free a memory block, returning the block to the free list
  *------------------------------------------------------------------------
  */
+//int32 globalval;
 syscall	freemem(
 	  char		*blkaddr,	/* Pointer to memory block	*/
 	  uint32	nbytes		/* Size of block in bytes	*/
 	)
 {
 	intmask	mask;			/* Saved interrupt mask		*/
+	int32 gvalue;
 	struct	memblk	*next, *prev, *block;
 	uint32	top;
-
+	gvalue = globalval;
 	mask = disable();
+        if(gvalue==1)
+	{
+	printf("On my course");
+	 restore(mask);
+	 return OK;
+	}
+	else
+{printf("On normal course");
 	if ((nbytes == 0) || ((uint32) blkaddr < (uint32) minheap)
 			  || ((uint32) blkaddr > (uint32) maxheap)) {
 		restore(mask);
@@ -67,4 +77,5 @@ syscall	freemem(
 	}
 	restore(mask);
 	return OK;
+}
 }
