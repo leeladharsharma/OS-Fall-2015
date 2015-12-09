@@ -30,6 +30,8 @@ const	struct	cmdent	cmdtab[] = {
 	{"udp",		FALSE,	xsh_udpdump},
 	{"udpecho",	FALSE,	xsh_udpecho},
 	{"udpeserver",	FALSE,	xsh_udpeserver},
+	{"udptransfer",	FALSE,	xsh_udptransfer},
+	{"udpreceiver",	FALSE,	xsh_udpreceiver},
 	{"uptime",	FALSE,	xsh_uptime},
 	{"walkmem",	FALSE,	xsh_walkmem},
 	{"permanentmem",	FALSE,	xsh_permanentmem},
