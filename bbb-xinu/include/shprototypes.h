@@ -88,6 +88,12 @@ extern	shellcmd  xsh_udpecho	(int32, char *[]);
 /* in file xsh_udpeserver.c */
 extern	shellcmd  xsh_udpeserver (int32, char *[]);
 
+/* in file xsh_udptransfer.c */
+extern	shellcmd  xsh_udptransfer (int32, char *[]);
+
+/* in file xsh_udpreceiver.c */
+extern	shellcmd  xsh_udpreceiver (int32, char *[]);
+
 /* in file xsh_uptime.c */
 extern	shellcmd  xsh_uptime	(int32, char *[]);
 
