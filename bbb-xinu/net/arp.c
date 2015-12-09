@@ -55,11 +55,26 @@ status	arp_resolve (
 
 	for (i=0; i<ARP_SIZ; i++) {
 		arptr = &arpcache[i];
+		/*arptr->arptime = clktime;
+		printf("Clktime is %d\n", clktime);
+		printf("arpstate is %d\n", arptr->arstate);
+		printf("arptime is %d\n", arptr->arptime);
+		printf("Diff is %d\n", (clktime - arptr->arptime));*/
 		if (arptr->arstate == AR_FREE) {
 			continue;
 		}
 		if (arptr->arpaddr == nxthop) { /* Adddress is in cache	*/
-			break;
+			/*printf("Inside Resolved state");
+			if((clktime - arptr->arptime) == 40)
+			{
+			 printf("finally where i wanted to be");
+			 arptr->arstate = AR_FREE;
+			printf("arpstate is %d\n", arptr->arstate);
+			 //arp_dmp();
+			 //freebuf((char *)arptr); 
+			
+			}*/
+			  break;
 		}
 	}
 
@@ -95,6 +110,7 @@ status	arp_resolve (
 	arptr->arstate = AR_PENDING;
 	arptr->arpaddr = nxthop;
 	arptr->arpid = currpid;
+	arptr->arptime = clktime;
 
 	/* Hand-craft an ARP Request packet */
 
@@ -300,7 +316,7 @@ int32	arp_alloc ()
 	int32	slot;			/* Slot in ARP cache		*/
 
 	/* Search for a free slot */
-
+	//printf("Clktime is %d", clktime);
 	for (slot=0; slot < ARP_SIZ; slot++) {
 		if (arpcache[slot].arstate == AR_FREE) {
 			memset((char *)&arpcache[slot],
