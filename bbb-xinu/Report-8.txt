@@ -1,0 +1,5 @@
+Implemented file system operations checking conditions at every step so that file operations dont fail.
+
+
+Leeladhar - worked on file open(), file close() and file create()
+Aritra - worked on file read() and file write()
