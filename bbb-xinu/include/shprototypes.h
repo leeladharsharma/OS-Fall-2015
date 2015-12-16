@@ -94,6 +94,9 @@ extern	shellcmd  xsh_udptransfer (int32, char *[]);
 /* in file xsh_udpreceiver.c */
 extern	shellcmd  xsh_udpreceiver (int32, char *[]);
 
+/* in file xsh_fstest.c */
+extern	shellcmd  xsh_fstest (int32, char *[]);
+
 /* in file xsh_uptime.c */
 extern	shellcmd  xsh_uptime	(int32, char *[]);
 
