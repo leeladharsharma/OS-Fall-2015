@@ -295,38 +295,7 @@ int fs_create(char *filename, int mode)
 	printf("\nFile %s created and opened successfully.\n",ptrDirent->name);
 	return next_open_fd;
 }
-int fs_seek(int fd, int offset)
-{
 
-	/* get the entry in open file table. */
-	fileTablePtr = &oft[fd];
-	
-	/* check if the file is open */
-	if(fileTablePtr->state != FSTATE_OPEN) {
-		printf("file is not open\n");
-		return SYSERR;	
-	}
-
-	if ( (offset + fileTablePtr->fileptr) < 0 ) {
-		printf("beginning of the file reached\n");
-		return SYSERR;
-	}
-	
-	/* check if reading from file will exceed the max file length */
-	if( (offset + fileTablePtr->fileptr) >= (MDEV_BLOCK_SIZE * INODEDIRECTBLOCKS) ) {
-		printf("bytes to read is greater than file size\n");
-		return SYSERR;
-	}
-
-	/* check if seek will exceed EOF */
-	if( (offset + fileTablePtr->fileptr) >= fileTablePtr->in.size ) {
-		printf("bytes to read was greater than file size\n");
-		return SYSERR;
-	}
-	
-	fileTablePtr->fileptr = offset + fileTablePtr->fileptr;
-	return OK;
-}
 int fs_read(int fd, void *buf, int nbytes)
 {
 	
