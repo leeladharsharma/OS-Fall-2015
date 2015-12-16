@@ -36,6 +36,7 @@ const	struct	cmdent	cmdtab[] = {
 	{"walkmem",	FALSE,	xsh_walkmem},
 	{"permanentmem",	FALSE,	xsh_permanentmem},
 	{"permanentstk",	FALSE,	xsh_permanentstk},
+	{"fstest",	FALSE,	xsh_fstest},
 	{"stacksize",	FALSE,	xsh_stacksize},
 	{"?",		FALSE,	xsh_help}
 
